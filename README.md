@@ -2,6 +2,6 @@
 
 DOM e eventos avançados
 
-Pode testa partir do https://bancoquantico-site.netlify.app  
+Pode testar apartir o link https://bancoquantico-site.netlify.app  
 
-<!-- Divirta-se :) -->
+Divirta-se :)
