@@ -100,13 +100,12 @@ btnScrollTo.addEventListener('click', function (e) {
 
 document.querySelector('.nav__links').addEventListener('click', function (e) {
   e.preventDefault();
-  // console.log('Link');
 
   // Esta é a estratégia de correspondência.
 
   if (e.target.classList.contains('nav__link')) {
     const id = e.target.getAttribute('href');
-    // console.log(id);
+
     document.querySelector(id).scrollIntoView({ behavior: 'smooth' });
   }
 });
@@ -115,7 +114,6 @@ document.querySelector('.nav__links').addEventListener('click', function (e) {
 
 tabsContainer.addEventListener('click', function (e) {
   const clicado = e.target.closest('.operations__tab');
-  // console.log(clicado);
 
   // Cláusula de guarda
   // nada for clicado, queremos terminar imediatamente esta função.
@@ -149,44 +147,16 @@ const funcAnimacao = function (e) {
   }
 };
 
-// func que a funcAnimação atribuindo valores com o .bind() tem quer ser usado em um evento
+// funcAnimação atribuindo valores com o .bind() tem quer ser usado em um evento
 nav.addEventListener('mouseover', funcAnimacao.bind(0.5));
 
 nav.addEventListener('mouseout', funcAnimacao.bind(1));
 
 //////////////////////////////////////////
-// // Fixar o menu = navegação fixa
-
-// const coordInicias = section1.getBoundingClientRect();
-
-// console.log(coordInicias);
-
-// window.addEventListener('scroll', function () {
-//   console.log(window.scrollY);
-
-//   if (window.scrollY > coordInicias.top) nav.classList.add('sticky');
-//   else nav.classList.remove('sticky');
-// });
-
-// const obsVolta = function (entradas, observador) {
-//   entradas.forEach(entrada => {
-//     console.log(entrada);
-//   });
-// };
-
-// const obsOpcoes = {
-//   root: null,
-//   threshold: [0, 0.2],
-// };
-
-// const observador = new IntersectionObserver(obsVolta, obsOpcoes);
-// observador.observe(section1);
+// Fixar o menu = navegação fixa
 
 const header = document.querySelector('.header');
-
 const navAltura = nav.getBoundingClientRect().height;
-// console.log(navAltura);
-
 const stickyNav = function (entradas) {
   const [entrada] = entradas;
   // console.log(entrada);
@@ -344,188 +314,4 @@ const slider = function () {
   });
 };
 slider();
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-// Selecionar bem o documento inteiro, de qualquer página
-
-// para esses elementos especiais, não precisamos nem mesmo escrever nenhum seletor
-console.log(document.documentElement);
-console.log(document.head);
-console.log(document.body);
-
-const header = document.querySelector('.header');
-
-// selecionar multiplos elemento
-const todaseção = document.querySelectorAll('.section');
-
-console.log(todaseção);
-
-// E aqui passamos apenas o próprio nome do ID sem o seletor.
-
-document.getElementById('#section--1');
-const todosBotões = document.getElementsByTagName('button');
-console.log(todosBotões);
-
-console.log(document.getElementsByClassName('btn'));
-
-// Criando e insserindo elementos
-// .insertAdjacentHTML
-
-const message = document.createElement('div');
-message.classList.add('cookie-message');
-// message.textContent =
-//   'Usamos cookies para melhorar a funcionalidade e análises.';
-message.innerHTML =
-  'Usamos cookies para melhorar a funcionalidade e análises. <button class="btn btn--close-cookie">Aceitar!</button></button>';
-// header.prepend(message);
-header.append(message);
-// header.append(message.cloneNode(true));
-
-// header.before(message);
-// header.after(message);
-
-//  Excluir elementos
-
-document
-  .querySelector('.btn--close-cookie')
-  .addEventListener('click', function () {
-    message.remove();
-    // message.parentElement.removeChild(message);
-  });
-
-//////////////////////////////////////////////
-
-// Styles, Attributes and Classes
-
-// Styles
-message.style.backgroundColor = '#37383d';
-message.style.width = '120%';
-
-console.log(message.style.color);
-console.log(message.style.backgroundColor);
-
-message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 30 + 'px';
-
-document.documentElement.style.setProperty('--color-primary', 'orangered');
-
-// Atributos
-const logo = document.querySelector('.nav__logo');
-console.log(logo.alt);
-console.log(logo.src);
-console.log(logo.className);
-
-logo.alt = 'Logo minimalista e lindo';
-
-// isso não é padrão e é por isso que não funciona.
-console.log(logo.designer);
-
-console.log(logo.getAttribute('designer'));
-logo.setAttribute('company', 'Bankist');
-
-console.log(logo.src);
-console.log(logo.getAttribute('src'));
-
-const link = document.querySelector('.nav__link--btn');
-console.log(link.href);
-console.log(link.getAttribute('href'));
-
-//  Atributos de dados
-console.log(logo.dataset.versionNumber);
-
-// Classes
-logo.classList.add('s', 'm');
-logo.classList.remove('s', 'm');
-logo.classList.toggle('s', 'm');
-logo.classList.contains('s', 'm'); // Não inclui
-
-
-// Tipos de eventos e manipuladores de eventos
-// Um evento é basicamente um sinal que é gerado por um certo nó DOM e um sinal significa que algo aconteceu, por exemplo, um clique em algum lugar ou o movimento do mouse, ou o usuário acionando o modo de tela inteira e realmente qualquer coisa importante, que acontece em nossa página, gera um evento.
-
-const h1 = document.querySelector('h1');
-
-const alertH1 = function (e) {
-  alert('addEventListener: Muito bom! você esta lendo o titúlo.');
-  // remover evento
-  // h1.removeEventListener('mouseenter', alertH1);
-};
-
-h1.addEventListener('mouseenter', alertH1);
-
-//  Este é outro padrão de remoção do EventListener
-
-setTimeout(() => h1.removeEventListener('mouseenter', alertH1), 3000);
-
-// h1.onmouseenter = function (e) {
-//   alert('addEventListener: Muito bom! você esta lendo o titúlo.');
-// };
-
-/////////////////////////////////////////////////////////////////////////////////////////
-
-// Os eventos JavaScript têm uma propriedade muito importante. Eles têm uma fase chamada de captura e uma fase de borbulhamento.
-
-// Propagação de evntos na prática
-
-// rgb(255, 255, 255)
-const numIntleatorio = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const corAleatoria = () =>
-  `rgb(${numIntleatorio(0, 255)}, ${numIntleatorio(0, 255)}, ${numIntleatorio(
-    0,
-    255
-  )})`;
-console.log(corAleatoria(0, 255));
-
-document.querySelector('.nav__link').addEventListener('click', function (e) {
-  this.style.backgroundColor = corAleatoria();
-  console.log('LINK', e.target);
-
-  // Parar com a propagação
-  // e.stopPropagation();
-});
-
-document.querySelector('.nav__links').addEventListener('click', function (e) {
-  this.style.backgroundColor = corAleatoria();
-  console.log('CONTEINER', e.target, e.currentTarget);
-});
-
-document.querySelector('.nav').addEventListener('click', function (e) {
-  this.style.backgroundColor = corAleatoria();
-  console.log('NAV', e.target, e.currentTarget);
-});
-
-// ATRAVECIA DOM
-
-const h1 = document.querySelector('h1');
-
-// Descendo para baixo: Filho
-console.log(h1.querySelectorAll('.highlight'));
-
-console.log(h1.childNodes);
-console.log(h1.children);
-
-h1.firstElementChild.style.color = 'white';
-h1.lastElementChild.style.color = 'blue';
-
-// Indo para cima: Pais
-console.log(h1.parentNode);
-console.log(h1.parentElement);
-
-h1.closest('.header').style.background = 'var(--gradient-secondary)';
-
-h1.closest('h1').style.background = 'var(--gradient-primary)';
-
-// Indo para o lado: irmãos
-// em JavaScript, só podemos acessar irmãos diretos. Basicamente, apenas o anterior e o próximo.
-
-console.log(h1.previousElementSibling);
-console.log(h1.nextElementSibling);
-
-console.log(h1.parentElement.children);
-
-console.log(h1.parentElement.children);
-[...h1.parentElement.children].forEach(function (el) {
-  if (el !== h1) el.style.transform = 'scale(0.5)';
-});
-*/
+///////////////////////////////////////////////////////////////////////////////////////////////
