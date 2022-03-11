@@ -1,5 +1,5 @@
 # Banco Quântico
-Este projeto foi construito com javaScript puro, manipulação DOM e eventos avançados:
+Este projeto foi construido com javaScript puro, manipulação DOM e eventos avançados:
 - Scroll
 - Windows modal
 - Carrossel
