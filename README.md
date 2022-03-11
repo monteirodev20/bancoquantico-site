@@ -14,4 +14,6 @@ Pode testar aqui [bancoquantico-site-monteiro](https://bancoquantico-site-montei
 
 Divirta-se :)
 
-![screencapture-site.png](img/screencapture-site.png)
+<!-- ![screencapture-site.png](img/screencapture-site.jpg) -->
+<a href="https://bancoquantico-site-monteiro.netlify.app/"><img src="img/screencapture-site.jpg" class="media-object  img-responsive img-thumbnail" width="550px"></a>
+
